@@ -2,19 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
-class Paddle {
+class Brick {
 public:
 	sf::Vector2f position;
-	float speed;
 	float width;
 	float height;
 	sf::RectangleShape shape;
 	sf::Color color;
-	sf::Color outlineColor;
 
-	Paddle(float pX, float pY, sf::Color color, sf::Color outlineColor);
+	Brick(float pX, float pY, sf::Color color);
 	void draw(sf::RenderWindow& window);
-	void moveLeft();
-	void moveRight();
-	void reset();
 };

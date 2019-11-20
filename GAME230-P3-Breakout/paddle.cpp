@@ -2,7 +2,6 @@
 #include <cmath>
 #include <vector>
 #include "Setting.h"
-#include "Ball.h"
 #include "Paddle.h"
 
 Paddle::Paddle(float pX, float pY, sf::Color color, sf::Color outlineColor)

@@ -31,7 +31,7 @@ void Ball::update()
 	this->position.y += this->velocity.y * dt.asSeconds();
 	this->checkCollision();
 
-	if (frameCount % 10 == 0) {
+	if (frameCount % 100 == 0) {
 		this->trails.erase(this->trails.begin());
 		this->trails.push_back(sf::Vector2f(this->position.x, this->position.y));
 	}
@@ -70,12 +70,29 @@ void Ball::checkCollision()
 		float collideAngle = atan2f(this->position.y - player->position.y, this->position.x - player->position.x) * 180 / 3.14f;
 		float sideAngle = atan2f(this->radius + player->height / 2, this->radius + player->width / 2) * 180 / 3.14f;
 		if (abs(collideAngle) > sideAngle && abs(collideAngle) < (180.0f - sideAngle)) {
-			this->angle = -this->angle;
 			this->angle = collideAngle;
 			this->color = player->outlineColor;
 		}
 		else {
 			this->angle = 180 - this->angle;
+		}
+	}
+	///brick
+	for (int i = 0; i < bricks.size(); i++) {
+		if (this->position.x + this->radius > bricks.at(i)->position.x - bricks.at(i)->width / 2 &&
+			this->position.x - this->radius < bricks.at(i)->position.x + bricks.at(i)->width / 2 &&
+			this->position.y + this->radius > bricks.at(i)->position.y - bricks.at(i)->height / 2 &&
+			this->position.y - this->radius < bricks.at(i)->position.y + bricks.at(i)->height / 2) {
+			float collideAngle = atan2f(this->position.y - bricks.at(i)->position.y, this->position.x - bricks.at(i)->position.x) * 180 / 3.14f;
+			float sideAngle = atan2f(this->radius + bricks.at(i)->height / 2, this->radius + player->width / 2) * 180 / 3.14f;
+			if (abs(collideAngle) > sideAngle&& abs(collideAngle) < (180.0f - sideAngle)) {
+				this->angle = -this->angle;
+				this->color = player->outlineColor;
+			}
+			else {
+				this->angle = 180 - this->angle;
+			}
+			bricks.erase(bricks.begin() + i);
 		}
 	}
 }

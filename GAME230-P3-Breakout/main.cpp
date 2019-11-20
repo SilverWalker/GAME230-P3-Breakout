@@ -20,11 +20,10 @@ int main()
 
 	player = new Paddle(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.95, sf::Color::White, sf::Color::Red);
 	ball = new Ball(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-
-	sf::RectangleShape shape;
-	shape.setSize(sf::Vector2f(100, 40));
-	shape.setOrigin(50, 20);
-	shape.setFillColor(sf::Color::Green);
+	
+	for (int i = 0; i < 100; i++) {
+		bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20, sf::Color(i * 5, i * 5, 250)));
+	}
 
 	srand(time(NULL));
 	while (window.isOpen())
@@ -63,11 +62,10 @@ int main()
 		}
 		window.clear();
 		if (!isGameOver) {
+			frameCount++;
 			player->draw(window);
-			for (int i = 0; i < 100; i++) {
-				shape.setPosition(i % 10 * 100 + 50, int(i / 10) * 40 + 20);
-				shape.setFillColor(sf::Color(i * 5, i * 5, 250));
-				window.draw(shape);
+			for (int i = 0; i < bricks.size(); i++) {
+				bricks.at(i)->draw(window);
 			}
 			ball->update();
 			ball->draw(window);

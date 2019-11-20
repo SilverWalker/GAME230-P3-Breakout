@@ -16,3 +16,4 @@ int frameCount = 0;
 
 Paddle* player;
 Ball* ball;
+std::vector<Brick*> bricks;

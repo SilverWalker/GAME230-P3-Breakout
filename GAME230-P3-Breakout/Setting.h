@@ -5,6 +5,7 @@
 
 #include "Paddle.h"
 #include "Ball.h"
+#include "Brick.h"
 
 extern int WINDOW_WIDTH;
 extern int WINDOW_HEIGHT;
@@ -21,3 +22,4 @@ extern int frameCount;
 
 extern Paddle* player;
 extern Ball* ball;
+extern std::vector<Brick*> bricks;
