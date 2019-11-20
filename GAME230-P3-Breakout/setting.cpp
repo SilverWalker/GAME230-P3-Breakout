@@ -13,3 +13,6 @@ bool isGameOver = false;
 sf::Clock deltaClock;
 sf::Time dt;
 int frameCount = 0;
+
+Paddle* player;
+Ball* ball;

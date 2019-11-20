@@ -3,6 +3,9 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 
+#include "Paddle.h"
+#include "Ball.h"
+
 extern int WINDOW_WIDTH;
 extern int WINDOW_HEIGHT;
 
@@ -15,3 +18,6 @@ extern bool isGameOver;
 extern sf::Clock deltaClock;
 extern sf::Time dt;
 extern int frameCount;
+
+extern Paddle* player;
+extern Ball* ball;

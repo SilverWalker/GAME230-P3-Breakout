@@ -14,12 +14,12 @@
 #include "Paddle.h"
 
 
-
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Breakout");
 
-	Paddle* player = new Paddle(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.95, sf::Color::White, sf::Color::Red);
+	player = new Paddle(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.95, sf::Color::White, sf::Color::Red);
+	ball = new Ball(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
 
 	sf::RectangleShape shape;
 	shape.setSize(sf::Vector2f(100, 40));
@@ -69,6 +69,8 @@ int main()
 				shape.setFillColor(sf::Color(i * 5, i * 5, 250));
 				window.draw(shape);
 			}
+			ball->update();
+			ball->draw(window);
 		}
 		window.display();
 	}
