@@ -19,5 +19,6 @@ void Brick::draw(sf::RenderWindow& window)
 	shape.setOrigin(this->width / 2, this->height / 2);
 	shape.setPosition(this->position.x, this->position.y);
 	shape.setFillColor(this->color);
+	shape.setTexture(&brickTexture);
 	window.draw(shape);
 }

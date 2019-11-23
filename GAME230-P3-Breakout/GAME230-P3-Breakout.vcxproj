@@ -161,6 +161,9 @@
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Setting.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="asset\texture\brick.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

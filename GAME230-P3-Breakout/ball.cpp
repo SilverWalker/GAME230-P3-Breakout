@@ -9,7 +9,7 @@ Ball::Ball(float pX, float pY)
 {
 	this->position.x = pX;
 	this->position.y = pY;
-	this->speed = 300.0f;
+	this->speed = 500.0f;
 	this->angle = 45;
 	this->radius = 10.0f;
 	this->color = sf::Color(255, 255, 255);
@@ -30,8 +30,11 @@ void Ball::update()
 	this->position.x += this->velocity.x * dt.asSeconds();
 	this->position.y += this->velocity.y * dt.asSeconds();
 	this->checkCollision();
+	if (this->position.x < 0) { this->position.x = this->radius; }
+	if (this->position.x > WINDOW_WIDTH) { this->position.x = WINDOW_WIDTH - this->radius; }
+	if (this->position.y < 0) { this->position.y = this->radius; }
 
-	if (frameCount % 100 == 0) {
+	if (frameCount % 50 == 0) {
 		this->trails.erase(this->trails.begin());
 		this->trails.push_back(sf::Vector2f(this->position.x, this->position.y));
 	}
@@ -56,10 +59,10 @@ void Ball::draw(sf::RenderWindow& window)
 void Ball::checkCollision()
 {
 	//screen
-	if (this->position.y - this->radius<0 || this->position.y + this->radius>WINDOW_HEIGHT) {
+	if (this->position.y - this->radius < 0 || this->position.y + this->radius > WINDOW_HEIGHT) {
 		this->angle = -this->angle;
 	}
-	if (this->position.x + this->radius<0 || this->position.x - this->radius>WINDOW_WIDTH) {
+	if (this->position.x - this->radius < 0 || this->position.x + this->radius > WINDOW_WIDTH) {
 		this->angle = 180 - this->angle;
 	}
 	//paddle
@@ -70,8 +73,7 @@ void Ball::checkCollision()
 		float collideAngle = atan2f(this->position.y - player->position.y, this->position.x - player->position.x) * 180 / 3.14f;
 		float sideAngle = atan2f(this->radius + player->height / 2, this->radius + player->width / 2) * 180 / 3.14f;
 		if (abs(collideAngle) > sideAngle && abs(collideAngle) < (180.0f - sideAngle)) {
-			this->angle = collideAngle;
-			this->color = player->outlineColor;
+			this->angle = round(collideAngle / 10) * 10;
 		}
 		else {
 			this->angle = 180 - this->angle;
@@ -87,11 +89,11 @@ void Ball::checkCollision()
 			float sideAngle = atan2f(this->radius + bricks.at(i)->height / 2, this->radius + player->width / 2) * 180 / 3.14f;
 			if (abs(collideAngle) > sideAngle&& abs(collideAngle) < (180.0f - sideAngle)) {
 				this->angle = -this->angle;
-				this->color = player->outlineColor;
 			}
 			else {
 				this->angle = 180 - this->angle;
 			}
+			this->color = bricks.at(i)->color;
 			bricks.erase(bricks.begin() + i);
 		}
 	}

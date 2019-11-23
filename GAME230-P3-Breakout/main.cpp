@@ -17,12 +17,14 @@
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Breakout");
+	loadAssets();
+	player = new Paddle(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT * 0.95f, sf::Color::White, sf::Color::Transparent);
+	ball = new Ball(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
 
-	player = new Paddle(WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.95, sf::Color::White, sf::Color::Red);
-	ball = new Ball(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	
 	for (int i = 0; i < 100; i++) {
-		bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20, sf::Color(i * 5, i * 5, 250)));
+		if ((i / 10) % 2 == 0) {
+			bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20 + 50, brickColors[i%10]));
+		}
 	}
 
 	srand(time(NULL));

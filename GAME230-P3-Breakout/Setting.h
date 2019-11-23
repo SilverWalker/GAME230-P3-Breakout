@@ -23,3 +23,9 @@ extern int frameCount;
 extern Paddle* player;
 extern Ball* ball;
 extern std::vector<Brick*> bricks;
+
+extern sf::Texture brickTexture;
+extern sf::Color brickColors[];
+
+
+extern void loadAssets();
