@@ -29,3 +29,4 @@ extern sf::Color brickColors[];
 
 
 extern void loadAssets();
+extern void resetGame();

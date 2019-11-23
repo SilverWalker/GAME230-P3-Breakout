@@ -20,7 +20,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Breakout");
 	loadAssets();
 	player = new Paddle(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT * 0.95f, sf::Color::White, sf::Color::Transparent);
-	ball = new Ball(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
+	ball = new Ball();
 	Ui ui;
 	for (int i = 0; i < 100; i++) {
 		if ((i / 10) % 2 == 0) {
@@ -38,10 +38,17 @@ int main()
 			if (event.type == sf::Event::Closed)
 				window.close();
 			if (event.type == sf::Event::EventType::KeyPressed) {
-				//switch between player mode and AI mode
+				//switch between mouse mode and keyboard mode
 				if (event.key.code == sf::Keyboard::S && !isGameOver) {
 					mouseMode = !mouseMode;
 				}
+				//restart game
+				if (event.key.code == sf::Keyboard::R && isGameOver) {
+					resetGame();
+				}
+			}
+			if (event.type == sf::Event::EventType::MouseButtonPressed && mouseMode && !ball->isActive) {
+				ball->setActive(true);
 			}
 		}
 
@@ -52,6 +59,10 @@ int main()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && !mouseMode)
 		{
 			player->moveRight();
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !mouseMode && !ball->isActive)
+		{
+			ball->setActive(true);
 		}
 		if (mouseMode) {
 			sf::Vector2i mousePos = sf::Mouse::getPosition(window);

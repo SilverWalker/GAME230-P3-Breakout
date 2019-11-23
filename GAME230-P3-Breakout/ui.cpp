@@ -32,7 +32,7 @@ Ui::Ui()
 	this->gameOverText.setPosition(sf::Vector2f(WINDOW_WIDTH * 0.5 - gameOverBounds.width / 2, WINDOW_HEIGHT * 0.4));
 
 	this->restartText.setFont(this->font);
-	this->restartText.setString("Press spacebar to restart game");
+	this->restartText.setString("Press R to restart game");
 	this->restartText.setCharacterSize(WINDOW_WIDTH / 24);
 	this->restartText.setFillColor(sf::Color::White);
 	sf::FloatRect restartBounds = this->restartText.getLocalBounds();

@@ -9,13 +9,16 @@ public:
 	float speed;
 	float angle;
 	float radius;
+	bool isActive;
 	sf::CircleShape shape;
 	sf::Color color;
 	std::vector<sf::Vector2f> trails;
 	sf::CircleShape trailShape;
 
-	Ball(float pX, float pY);
+	Ball();
 	void update();
 	void draw(sf::RenderWindow& window);
 	void checkCollision();
+	void reset();
+	void setActive(bool isActive);
 };

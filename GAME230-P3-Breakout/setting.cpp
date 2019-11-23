@@ -26,3 +26,16 @@ sf::Color brickColors[10] = { sf::Color(229, 115, 115), sf::Color(255, 183, 77),
 void loadAssets() {
 	brickTexture.loadFromFile("asset/texture/brick.png");
 }
+
+void resetGame() {
+	score = 0;
+	life = 3;
+
+	bricks.clear();
+	for (int i = 0; i < 100; i++) {
+		if ((i / 10) % 2 == 0) {
+			bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20 + 50, brickColors[i % 10]));
+		}
+	}
+	isGameOver = false;
+}
