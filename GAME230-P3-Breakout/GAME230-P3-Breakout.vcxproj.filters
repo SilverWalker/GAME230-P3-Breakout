@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\asset\texture">
       <UniqueIdentifier>{cbd33359-7493-4c53-bc67-a7a198ad539c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\asset\font">
+      <UniqueIdentifier>{b2edbef0-32f7-4731-8a1c-ca8414385452}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -36,6 +39,9 @@
     <ClCompile Include="brick.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Setting.h">
@@ -50,10 +56,18 @@
     <ClInclude Include="Brick.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Ui.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="asset\texture\brick.png">
       <Filter>Resource Files\asset\texture</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="asset\font\JustMyType-KePl.ttf">
+      <Filter>Resource Files\asset\font</Filter>
+    </Font>
   </ItemGroup>
 </Project>

@@ -94,6 +94,7 @@ void Ball::checkCollision()
 				this->angle = 180 - this->angle;
 			}
 			this->color = bricks.at(i)->color;
+			score += 50;
 			bricks.erase(bricks.begin() + i);
 		}
 	}

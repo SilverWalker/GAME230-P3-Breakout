@@ -12,6 +12,7 @@
 
 #include "Setting.h"
 #include "Paddle.h"
+#include "Ui.h"
 
 
 int main()
@@ -20,7 +21,7 @@ int main()
 	loadAssets();
 	player = new Paddle(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT * 0.95f, sf::Color::White, sf::Color::Transparent);
 	ball = new Ball(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT / 2.0f);
-
+	Ui ui;
 	for (int i = 0; i < 100; i++) {
 		if ((i / 10) % 2 == 0) {
 			bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20 + 50, brickColors[i%10]));
@@ -72,6 +73,11 @@ int main()
 			ball->update();
 			ball->draw(window);
 		}
+		else {
+			ui.drawGameOver(window);
+		}
+		ui.update();
+		ui.drawInfo(window);
 		window.display();
 	}
 
