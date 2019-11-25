@@ -7,7 +7,7 @@
 
 Ball::Ball()
 {
-	this->speed = 500.0f;
+	this->speed = 300.0f + 200.0f * level;
 	this->angle = -45;
 	this->radius = 10.0f;
 	this->isActive = false;
@@ -119,7 +119,7 @@ void Ball::checkCollision()
 }
 
 void Ball::reset() {
-	this->speed = 500.0f;
+	this->speed = 300.0f + 200.0f * level;
 	this->angle = -45;
 	ball->setActive(false);
 	this->position.x = player->position.x;

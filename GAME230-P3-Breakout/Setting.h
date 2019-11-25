@@ -15,6 +15,7 @@ extern bool mouseMode;
 extern int score;
 extern int life;
 extern bool isGameOver;
+extern int level;
 
 extern sf::Clock deltaClock;
 extern sf::Time dt;

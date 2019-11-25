@@ -22,7 +22,13 @@ Ui::Ui()
 	this->lifeText.setString("Life: " + std::to_string(life));
 	this->lifeText.setCharacterSize(WINDOW_WIDTH / 36);
 	this->lifeText.setFillColor(sf::Color::White);
-	this->lifeText.setPosition(sf::Vector2f(WINDOW_WIDTH * 0.9, WINDOW_HEIGHT * 0.01));
+	this->lifeText.setPosition(sf::Vector2f(WINDOW_WIDTH * 0.7, WINDOW_HEIGHT * 0.01));
+
+	this->levelText.setFont(this->font);
+	this->levelText.setString("Level: " + std::to_string(level));
+	this->levelText.setCharacterSize(WINDOW_WIDTH / 36);
+	this->levelText.setFillColor(sf::Color::White);
+	this->levelText.setPosition(sf::Vector2f(WINDOW_WIDTH * 0.4, WINDOW_HEIGHT * 0.01));
 
 	this->gameOverText.setFont(this->font);
 	this->gameOverText.setString("Game Over!");
@@ -43,6 +49,7 @@ void Ui::update()
 {
 	this->scoreText.setString("Score: " + std::to_string(score));
 	this->lifeText.setString("Life: " + std::to_string(life));
+	this->levelText.setString("Level: " + std::to_string(level));
 }
 
 void Ui::drawBg(sf::RenderWindow& window)
@@ -54,6 +61,7 @@ void Ui::drawInfo(sf::RenderWindow& window)
 {
 	window.draw(this->scoreText);
 	window.draw(this->lifeText);
+	window.draw(this->levelText);
 }
 
 void Ui::drawGameOver(sf::RenderWindow& window)

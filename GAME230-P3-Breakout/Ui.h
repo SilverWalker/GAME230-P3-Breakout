@@ -7,6 +7,7 @@ public:
 	sf::Font font;
 	sf::Text scoreText;
 	sf::Text lifeText;
+	sf::Text levelText;
 	sf::Text gameOverText;
 	sf::Text restartText;
 

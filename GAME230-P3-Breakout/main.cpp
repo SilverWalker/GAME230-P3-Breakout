@@ -14,6 +14,13 @@
 #include "Paddle.h"
 #include "Ui.h"
 
+void setBricks() {
+	for (int i = 0; i < 100; i++) {
+		if ((i / 10) % 2 == 0) {
+			bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20 + 50, brickColors[i % 10]));
+		}
+	}
+}
 
 int main()
 {
@@ -22,11 +29,7 @@ int main()
 	player = new Paddle(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT * 0.95f, sf::Color::White, sf::Color::Transparent);
 	ball = new Ball();
 	Ui ui;
-	for (int i = 0; i < 100; i++) {
-		if ((i / 10) % 2 == 0) {
-			bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20 + 50, brickColors[i%10]));
-		}
-	}
+	setBricks();
 
 	srand(time(NULL));
 	while (window.isOpen())
@@ -47,7 +50,7 @@ int main()
 					resetGame();
 				}
 			}
-			if (event.type == sf::Event::EventType::MouseButtonPressed && mouseMode && !ball->isActive) {
+			if (event.type == sf::Event::EventType::MouseButtonPressed && mouseMode && !ball->isActive && !isGameOver) {
 				ball->setActive(true);
 			}
 		}
@@ -60,7 +63,7 @@ int main()
 		{
 			player->moveRight();
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !mouseMode && !ball->isActive)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && !mouseMode && !ball->isActive && !isGameOver)
 		{
 			ball->setActive(true);
 		}
@@ -78,6 +81,11 @@ int main()
 		if (!isGameOver) {
 			frameCount++;
 			player->draw(window);
+			if (bricks.size() <= 0) {
+				level++;
+				ball->reset();
+				setBricks();
+			}
 			for (int i = 0; i < bricks.size(); i++) {
 				bricks.at(i)->draw(window);
 			}

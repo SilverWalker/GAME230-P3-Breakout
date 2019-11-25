@@ -9,6 +9,7 @@ bool mouseMode = true;
 int score = 0;
 int life = 3;
 bool isGameOver = false;
+int level = 1;
 
 sf::Clock deltaClock;
 sf::Time dt;
@@ -30,6 +31,7 @@ void loadAssets() {
 void resetGame() {
 	score = 0;
 	life = 3;
+	level = 1;
 
 	bricks.clear();
 	for (int i = 0; i < 100; i++) {
