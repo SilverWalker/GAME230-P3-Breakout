@@ -6,6 +6,7 @@
 #include "Paddle.h"
 #include "Ball.h"
 #include "Brick.h"
+#include "Powerup.h"
 
 extern int WINDOW_WIDTH;
 extern int WINDOW_HEIGHT;
@@ -24,9 +25,12 @@ extern int frameCount;
 extern Paddle* player;
 extern Ball* ball;
 extern std::vector<Brick*> bricks;
+extern std::vector<Powerup*> powerups;
 
 extern sf::Texture brickTexture;
 extern sf::Color brickColors[];
+
+extern sf::Color powerupColors[];
 
 
 extern void loadAssets();

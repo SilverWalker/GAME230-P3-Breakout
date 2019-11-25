@@ -25,7 +25,6 @@ void Ball::update()
 	if (this->isActive) {
 		this->velocity.x = this->speed * cosf(this->angle * 3.14f / 180);
 		this->velocity.y = this->speed * sinf(this->angle * 3.14f / 180);
-		//std::cout << this->angle << std::endl;
 		this->position.x += this->velocity.x * dt.asSeconds();
 		this->position.y += this->velocity.y * dt.asSeconds();
 		this->checkCollision();
@@ -76,6 +75,7 @@ void Ball::checkCollision()
 	if (this->position.y - this->radius > WINDOW_HEIGHT) {
 		if (life > 0) {
 			life--;
+			player->reset();
 			this->reset();
 		}
 		else {
@@ -113,6 +113,7 @@ void Ball::checkCollision()
 			}
 			this->color = bricks.at(i)->color;
 			score += 50;
+			delete bricks[i];
 			bricks.erase(bricks.begin() + i);
 		}
 	}

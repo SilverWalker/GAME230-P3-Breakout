@@ -13,6 +13,15 @@ Brick::Brick(float pX, float pY, sf::Color color)
 	this->color = color;
 }
 
+Brick::~Brick() {
+	//spawn powerup
+	int chance = rand() % 100;
+	if (chance < 20) {
+		int type = rand() % 5;
+		powerups.push_back(new Powerup(this->position.x, this->position.y, type));
+	}
+}
+
 void Brick::draw(sf::RenderWindow& window)
 {
 	shape.setSize({ this->width, this->height });

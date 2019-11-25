@@ -11,5 +11,6 @@ public:
 	sf::Color color;
 
 	Brick(float pX, float pY, sf::Color color);
+	~Brick();
 	void draw(sf::RenderWindow& window);
 };

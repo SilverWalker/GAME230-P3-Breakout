@@ -44,5 +44,17 @@ void Paddle::reset() {
 	this->speed = 800.0f;
 	this->width = 100;
 	this->height = 20;
-	this->position.x = WINDOW_WIDTH / 2;
+}
+
+void Paddle::checkCollision() {
+	//powerup
+	for (int i = 0; i < powerups.size(); i++) {
+		if (this->position.x + this->width / 2 > powerups.at(i)->position.x - powerups.at(i)->size / 2 &&
+			this->position.x - this->width / 2 < powerups.at(i)->position.x + powerups.at(i)->size / 2 &&
+			this->position.y + this->height / 2 > powerups.at(i)->position.y - powerups.at(i)->size / 2 &&
+			this->position.y - this->height / 2 < powerups.at(i)->position.y + powerups.at(i)->size / 2) {
+			delete powerups[i];
+			powerups.erase(powerups.begin() + i);
+		}
+	}
 }

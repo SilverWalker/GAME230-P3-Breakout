@@ -13,8 +13,11 @@
 #include "Setting.h"
 #include "Paddle.h"
 #include "Ui.h"
+#include "Powerup.h"
 
 void setBricks() {
+	player->reset();
+	powerups.clear();
 	for (int i = 0; i < 100; i++) {
 		if ((i / 10) % 2 == 0) {
 			bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20 + 50, brickColors[i % 10]));
@@ -80,6 +83,7 @@ int main()
 		window.clear();
 		if (!isGameOver) {
 			frameCount++;
+			player->checkCollision();
 			player->draw(window);
 			if (bricks.size() <= 0) {
 				level++;
@@ -88,6 +92,15 @@ int main()
 			}
 			for (int i = 0; i < bricks.size(); i++) {
 				bricks.at(i)->draw(window);
+			}
+			for (int i = 0; i < powerups.size(); i++) {
+				powerups.at(i)->update();
+				if(powerups.at(i)->checkOutOfRange()){
+					powerups.erase(powerups.begin() + i);
+				}
+				else {
+					powerups.at(i)->draw(window);
+				}
 			}
 			ball->update();
 			ball->draw(window);
