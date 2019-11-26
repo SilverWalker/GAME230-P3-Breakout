@@ -12,7 +12,6 @@ Powerup::Powerup(float pX, float pY, int upType)
 	this->size = 30;
 	this->upType = upType;	//0: Larger paddle  1: Smaller paddle  2:Slower ball  3: Faster ball  4:Extra points  5: Safety net
 	this->color = powerupColors[upType];
-	this->color.a = 100;
 	this->outlineColor = powerupColors[upType];
 }
 
@@ -43,8 +42,9 @@ void Powerup::draw(sf::RenderWindow& window)
 	shape.setOrigin(this->size / 2, this->size / 2);
 	shape.setPosition(this->position.x, this->position.y);
 	shape.setFillColor(this->color);
-	shape.setOutlineColor(this->outlineColor);
-	shape.setOutlineThickness(3);
+	shape.setTexture(&powerupTextures[this->upType]);
+	//shape.setOutlineColor(this->outlineColor);
+	//shape.setOutlineThickness(3);
 	window.draw(shape);
 }
 

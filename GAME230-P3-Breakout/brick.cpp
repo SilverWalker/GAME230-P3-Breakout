@@ -29,7 +29,10 @@ void Brick::draw(sf::RenderWindow& window)
 	shape.setOrigin(this->width / 2, this->height / 2);
 	shape.setPosition(this->position.x, this->position.y);
 	shape.setFillColor(this->color);
-	if(this->life>1){
+	if (this->life < 0) {
+		shape.setTexture(&brickFixedTexture);
+	}
+	else if(this->life > 1){
 		shape.setTexture(&brick2Texture);
 	}
 	else {

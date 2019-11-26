@@ -122,6 +122,21 @@ void Ball::checkCollision()
 			}
 		}
 	}
+	for (int i = 0; i < fixedBricks.size(); i++) {
+		if (this->position.x + this->radius > fixedBricks.at(i)->position.x - fixedBricks.at(i)->width / 2 &&
+			this->position.x - this->radius < fixedBricks.at(i)->position.x + fixedBricks.at(i)->width / 2 &&
+			this->position.y + this->radius > fixedBricks.at(i)->position.y - fixedBricks.at(i)->height / 2 &&
+			this->position.y - this->radius < fixedBricks.at(i)->position.y + fixedBricks.at(i)->height / 2) {
+			float collideAngle = atan2f(this->position.y - fixedBricks.at(i)->position.y, this->position.x - fixedBricks.at(i)->position.x) * 180 / 3.14f;
+			float sideAngle = atan2f(this->radius + fixedBricks.at(i)->height / 2, this->radius + fixedBricks.at(i)->width / 2) * 180 / 3.14f;
+			if (abs(collideAngle) > sideAngle&& abs(collideAngle) < (180.0f - sideAngle)) {
+				verticalFlip = true;
+			}
+			else {
+				horizontalFlip = true;
+			}
+		}
+	}
 	if(verticalFlip) this->angle = -this->angle;
 	if(horizontalFlip) this->angle = 180 - this->angle;
 }

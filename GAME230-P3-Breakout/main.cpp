@@ -84,6 +84,9 @@ int main()
 			for (int i = 0; i < bricks.size(); i++) {
 				bricks.at(i)->draw(window);
 			}
+			for (int i = 0; i < fixedBricks.size(); i++) {
+				fixedBricks.at(i)->draw(window);
+			}
 			for (int i = 0; i < powerups.size(); i++) {
 				powerups.at(i)->update();
 				if(powerups.at(i)->checkOutOfRange()){

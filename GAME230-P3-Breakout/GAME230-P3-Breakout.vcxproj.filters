@@ -79,6 +79,24 @@
     <Image Include="asset\texture\brick-2.png">
       <Filter>Resource Files\asset\texture</Filter>
     </Image>
+    <Image Include="asset\texture\brick-fixed.png">
+      <Filter>Resource Files\asset\texture</Filter>
+    </Image>
+    <Image Include="asset\texture\powerup-0.png">
+      <Filter>Resource Files\asset\texture</Filter>
+    </Image>
+    <Image Include="asset\texture\powerup-1.png">
+      <Filter>Resource Files\asset\texture</Filter>
+    </Image>
+    <Image Include="asset\texture\powerup-2.png">
+      <Filter>Resource Files\asset\texture</Filter>
+    </Image>
+    <Image Include="asset\texture\powerup-3.png">
+      <Filter>Resource Files\asset\texture</Filter>
+    </Image>
+    <Image Include="asset\texture\powerup-4.png">
+      <Filter>Resource Files\asset\texture</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="asset\font\JustMyType-KePl.ttf">

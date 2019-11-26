@@ -27,7 +27,7 @@ LevelBuilder::LevelBuilder()
 			{90,8,2}, {91,8,2}, {92,8,2}, {93,8,2}, {94,8,2}, {95,8,2}, {96,8,2}, {97,8,2}, {98,8,2}
 		},
 		{	//level 3
-			{20,0,1}, {21,1,1}, {22,2,1}, {23,3,1}, {24,4,1}, {25,5,1}, {26,6,1}, {27,7,1}, {28,8,1}, {29,9,1}
+			{20,0,1}, {21,1,-1}, {22,2,1}, {23,3,-1}, {24,4,1}, {25,5,-1}, {26,6,1}, {27,7,-1}, {28,8,1}, {29,9,-1}
 		},
 		{	//level 4
 			{40,0,1}, {41,1,1}, {42,2,1}, {43,3,1}, {44,4,1}, {45,5,1}, {46,6,1}, {47,7,1}, {48,8,1}, {49,9,1}
@@ -44,14 +44,19 @@ void LevelBuilder::buildLevel(int level)
 	player->reset();
 	ball->reset();
 	bricks.clear();
+	fixedBricks.clear();
 	powerups.clear();
 	/*for (int i = 0; i < 100; i++) {
 		if ((i / 10) % 2 == 0) {
 			bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20 + 50, i % 10, 2));
 		}
 	}*/
-	std::cout << this->levels.at(stage).size() << std::endl;
 	for (int i = 0; i < this->levels.at(stage).size(); i++) {
-		bricks.push_back(new Brick((this->levels[stage][i][0] % 10) * 100 + 50, int(this->levels[stage][i][0] / 10) * 40 + 20 + 50, this->levels[stage][i][1], this->levels[stage][i][2]));
+		if (this->levels[stage][i][2] > 0) {
+			bricks.push_back(new Brick((this->levels[stage][i][0] % 10) * 100 + 50, int(this->levels[stage][i][0] / 10) * 40 + 20 + 50, this->levels[stage][i][1], this->levels[stage][i][2]));
+		}
+		else {
+			fixedBricks.push_back(new Brick((this->levels[stage][i][0] % 10) * 100 + 50, int(this->levels[stage][i][0] / 10) * 40 + 20 + 50, this->levels[stage][i][1], this->levels[stage][i][2]));
+		}
 	}
 }
