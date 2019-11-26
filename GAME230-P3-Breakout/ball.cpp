@@ -117,12 +117,15 @@ void Ball::checkCollision()
 				horizontalFlip = true;
 			}
 			this->color = bricks.at(i)->color;
-			waves.push_back(new Wave(this->position.x, this->position.y, this->color));
 			bricks.at(i)->life--;
 			if(bricks.at(i)->life<=0){
+				waves.push_back(new Wave(this->position.x, this->position.y, this->color));
 				score += 50;
 				delete bricks[i];
 				bricks.erase(bricks.begin() + i);
+			}
+			else {
+				waves.push_back(new Wave(bricks.at(i)->position.x, bricks.at(i)->position.y, bricks.at(i)->width, bricks.at(i)->height, bricks.at(i)->color));
 			}
 		}
 	}
@@ -139,6 +142,7 @@ void Ball::checkCollision()
 			else {
 				horizontalFlip = true;
 			}
+			waves.push_back(new Wave(fixedBricks.at(i)->position.x, fixedBricks.at(i)->position.y, fixedBricks.at(i)->width, fixedBricks.at(i)->height, fixedBricks.at(i)->color));
 		}
 	}
 	if(verticalFlip) this->angle = -this->angle;
