@@ -7,7 +7,7 @@
 
 Ball::Ball()
 {
-	this->speed = 300.0f + 200.0f * level;
+	this->speed = 300.0f + 100.0f * level;
 	this->angle = -45;
 	this->radius = 10.0f;
 	this->isActive = false;
@@ -98,29 +98,36 @@ void Ball::checkCollision()
 		}
 	}
 	///brick
+	bool verticalFlip = false;
+	bool horizontalFlip = false;
 	for (int i = 0; i < bricks.size(); i++) {
 		if (this->position.x + this->radius > bricks.at(i)->position.x - bricks.at(i)->width / 2 &&
 			this->position.x - this->radius < bricks.at(i)->position.x + bricks.at(i)->width / 2 &&
 			this->position.y + this->radius > bricks.at(i)->position.y - bricks.at(i)->height / 2 &&
 			this->position.y - this->radius < bricks.at(i)->position.y + bricks.at(i)->height / 2) {
 			float collideAngle = atan2f(this->position.y - bricks.at(i)->position.y, this->position.x - bricks.at(i)->position.x) * 180 / 3.14f;
-			float sideAngle = atan2f(this->radius + bricks.at(i)->height / 2, this->radius + player->width / 2) * 180 / 3.14f;
+			float sideAngle = atan2f(this->radius + bricks.at(i)->height / 2, this->radius + bricks.at(i)->width / 2) * 180 / 3.14f;
 			if (abs(collideAngle) > sideAngle&& abs(collideAngle) < (180.0f - sideAngle)) {
-				this->angle = -this->angle;
+				verticalFlip = true;
 			}
 			else {
-				this->angle = 180 - this->angle;
+				horizontalFlip = true;
 			}
 			this->color = bricks.at(i)->color;
-			score += 50;
-			delete bricks[i];
-			bricks.erase(bricks.begin() + i);
+			bricks.at(i)->life--;
+			if(bricks.at(i)->life<=0){
+				score += 50;
+				delete bricks[i];
+				bricks.erase(bricks.begin() + i);
+			}
 		}
 	}
+	if(verticalFlip) this->angle = -this->angle;
+	if(horizontalFlip) this->angle = 180 - this->angle;
 }
 
 void Ball::reset() {
-	this->speed = 300.0f + 200.0f * level;
+	this->speed = 300.0f + 100.0f * level;
 	this->angle = -45;
 	ball->setActive(false);
 	this->position.x = player->position.x;

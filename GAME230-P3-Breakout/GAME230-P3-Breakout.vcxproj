@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="brick.cpp" />
+    <ClCompile Include="levelBuilder.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="paddle.cpp" />
     <ClCompile Include="powerup.cpp" />
@@ -160,12 +161,14 @@
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="LevelBuilder.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Powerup.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="Ui.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="asset\texture\brick-2.png" />
     <Image Include="asset\texture\brick.png" />
   </ItemGroup>
   <ItemGroup>

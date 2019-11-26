@@ -9,8 +9,9 @@ public:
 	float height;
 	sf::RectangleShape shape;
 	sf::Color color;
+	int life;
 
-	Brick(float pX, float pY, sf::Color color);
+	Brick(float pX, float pY, int colorId, int life);
 	~Brick();
 	void draw(sf::RenderWindow& window);
 };

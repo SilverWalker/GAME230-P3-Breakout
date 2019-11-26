@@ -4,13 +4,14 @@
 #include "Setting.h"
 #include "Brick.h"
 
-Brick::Brick(float pX, float pY, sf::Color color)
+Brick::Brick(float pX, float pY, int colorId, int life)
 {
 	this->position.x = pX;
 	this->position.y = pY;
 	this->width = 100;
 	this->height = 40;
-	this->color = color;
+	this->color = brickColors[colorId];
+	this->life = life;
 }
 
 Brick::~Brick() {
@@ -28,6 +29,11 @@ void Brick::draw(sf::RenderWindow& window)
 	shape.setOrigin(this->width / 2, this->height / 2);
 	shape.setPosition(this->position.x, this->position.y);
 	shape.setFillColor(this->color);
-	shape.setTexture(&brickTexture);
+	if(this->life>1){
+		shape.setTexture(&brick2Texture);
+	}
+	else {
+		shape.setTexture(&brickTexture);
+	}
 	window.draw(shape);
 }

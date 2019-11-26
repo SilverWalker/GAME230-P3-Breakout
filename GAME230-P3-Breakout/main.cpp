@@ -14,16 +14,7 @@
 #include "Paddle.h"
 #include "Ui.h"
 #include "Powerup.h"
-
-void setBricks() {
-	player->reset();
-	powerups.clear();
-	for (int i = 0; i < 100; i++) {
-		if ((i / 10) % 2 == 0) {
-			bricks.push_back(new Brick((i % 10) * 100 + 50, int(i / 10) * 40 + 20 + 50, brickColors[i % 10]));
-		}
-	}
-}
+#include "LevelBuilder.h"
 
 int main()
 {
@@ -32,7 +23,7 @@ int main()
 	player = new Paddle(WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT * 0.95f, sf::Color::White, sf::Color::Transparent);
 	ball = new Ball();
 	Ui ui;
-	setBricks();
+	levelBuilder.buildLevel(level);
 
 	srand(time(NULL));
 	while (window.isOpen())
@@ -88,7 +79,7 @@ int main()
 			if (bricks.size() <= 0) {
 				level++;
 				ball->reset();
-				setBricks();
+				levelBuilder.buildLevel(level);
 			}
 			for (int i = 0; i < bricks.size(); i++) {
 				bricks.at(i)->draw(window);

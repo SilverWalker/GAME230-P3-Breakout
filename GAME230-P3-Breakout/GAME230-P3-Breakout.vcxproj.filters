@@ -45,6 +45,9 @@
     <ClCompile Include="powerup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="levelBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Setting.h">
@@ -65,9 +68,15 @@
     <ClInclude Include="Powerup.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelBuilder.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="asset\texture\brick.png">
+      <Filter>Resource Files\asset\texture</Filter>
+    </Image>
+    <Image Include="asset\texture\brick-2.png">
       <Filter>Resource Files\asset\texture</Filter>
     </Image>
   </ItemGroup>
