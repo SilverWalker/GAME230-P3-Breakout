@@ -9,7 +9,7 @@ bool mouseMode = true;
 int score = 0;
 int life = 3;
 bool isGameOver = false;
-int level = 2;
+int level = 1;
 
 sf::Clock deltaClock;
 sf::Time dt;
