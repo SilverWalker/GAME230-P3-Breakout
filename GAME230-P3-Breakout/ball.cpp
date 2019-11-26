@@ -68,9 +68,12 @@ void Ball::checkCollision()
 	//screen
 	if (this->position.x - this->radius < 0 || this->position.x + this->radius > WINDOW_WIDTH) {
 		this->angle = 180 - this->angle;
+		if (this->position.x + this->speed * cosf(this->angle * 3.14f / 180) * dt.asSeconds() - this->radius < 0) this->position.x = this->radius + 0.1f;
+		if (this->position.x + this->speed * cosf(this->angle * 3.14f / 180) * dt.asSeconds() + this->radius > WINDOW_WIDTH) this->position.x = WINDOW_WIDTH - this->radius - 0.1f;
 	}
 	if (this->position.y - this->radius < 0) {
 		this->angle = -this->angle;
+		if (this->position.y + this->speed * sinf(this->angle * 3.14f / 180) * dt.asSeconds() - this->radius < 0) this->position.y = this->radius + 0.1f;
 	}
 	if (this->position.y - this->radius > WINDOW_HEIGHT) {
 		if (life > 0) {
