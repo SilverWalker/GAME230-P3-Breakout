@@ -8,6 +8,7 @@ public:
 	sf::Text scoreText;
 	sf::Text lifeText;
 	sf::Text levelText;
+	sf::Text controlText;
 	sf::Text gameOverText;
 	sf::Text restartText;
 
