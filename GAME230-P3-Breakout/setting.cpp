@@ -35,6 +35,8 @@ sf::Color powerupColors[10] = { sf::Color(129, 199, 132), sf::Color(229, 115, 11
 							  sf::Color(79, 195, 247), sf::Color(121, 134, 203), sf::Color(186, 104, 200),
 							  sf::Color(250, 250, 250), sf::Color(150, 150, 150), sf::Color(80, 80, 80) };
 
+std::vector<Wave*> waves;
+
 void loadAssets() {
 	brickTexture.loadFromFile("asset/texture/brick.png");
 	brick2Texture.loadFromFile("asset/texture/brick-2.png");

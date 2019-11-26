@@ -117,6 +117,7 @@ void Ball::checkCollision()
 				horizontalFlip = true;
 			}
 			this->color = bricks.at(i)->color;
+			waves.push_back(new Wave(this->position.x, this->position.y, this->color));
 			bricks.at(i)->life--;
 			if(bricks.at(i)->life<=0){
 				score += 50;

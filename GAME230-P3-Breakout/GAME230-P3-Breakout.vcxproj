@@ -157,6 +157,7 @@
     <ClCompile Include="powerup.cpp" />
     <ClCompile Include="setting.cpp" />
     <ClCompile Include="ui.cpp" />
+    <ClCompile Include="wave.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="Powerup.h" />
     <ClInclude Include="Setting.h" />
     <ClInclude Include="Ui.h" />
+    <ClInclude Include="Wave.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="asset\texture\brick-2.png" />

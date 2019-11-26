@@ -8,6 +8,7 @@
 #include "Brick.h"
 #include "Powerup.h"
 #include "LevelBuilder.h"
+#include "Wave.h"
 
 extern int WINDOW_WIDTH;
 extern int WINDOW_HEIGHT;
@@ -39,6 +40,7 @@ extern sf::Texture powerupTextures[];
 
 extern sf::Color powerupColors[];
 
+extern std::vector<Wave*> waves;
 
 extern void loadAssets();
 extern void resetGame();

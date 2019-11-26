@@ -96,6 +96,15 @@ int main()
 					powerups.at(i)->draw(window);
 				}
 			}
+			for (int i = 0; i < waves.size(); i++) {
+				waves.at(i)->update();
+				if (waves.at(i)->life <= 0) {
+					waves.erase(waves.begin() + i);
+				}
+				else {
+					waves.at(i)->draw(window);
+				}
+			}
 			ball->update();
 			ball->draw(window);
 		}
