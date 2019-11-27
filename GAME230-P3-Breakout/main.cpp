@@ -78,6 +78,7 @@ int main()
 			player->draw(window);
 			if (bricks.size() <= 0) {
 				level++;
+				playSound(6);
 				ball->reset();
 				levelBuilder.buildLevel(level);
 			}

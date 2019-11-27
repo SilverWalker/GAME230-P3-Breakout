@@ -68,14 +68,17 @@ void Ball::checkCollision()
 	//screen
 	if (this->position.x - this->radius < 0 || this->position.x + this->radius > WINDOW_WIDTH) {
 		this->angle = 180 - this->angle;
+		playSound(1);
 		if (this->position.x + this->speed * cosf(this->angle * 3.14f / 180) * dt.asSeconds() - this->radius < 0) this->position.x = this->radius + 0.1f;
 		if (this->position.x + this->speed * cosf(this->angle * 3.14f / 180) * dt.asSeconds() + this->radius > WINDOW_WIDTH) this->position.x = WINDOW_WIDTH - this->radius - 0.1f;
 	}
 	if (this->position.y - this->radius < 0) {
 		this->angle = -this->angle;
+		playSound(1);
 		if (this->position.y + this->speed * sinf(this->angle * 3.14f / 180) * dt.asSeconds() - this->radius < 0) this->position.y = this->radius + 0.1f;
 	}
 	if (this->position.y - this->radius > WINDOW_HEIGHT) {
+		playSound(5);
 		if (life > 0) {
 			life--;
 			player->reset();
@@ -99,6 +102,7 @@ void Ball::checkCollision()
 		else {
 			this->angle = 180 - this->angle;
 		}
+		playSound(0);
 	}
 	///brick
 	bool verticalFlip = false;
@@ -119,12 +123,14 @@ void Ball::checkCollision()
 			this->color = bricks.at(i)->color;
 			bricks.at(i)->life--;
 			if(bricks.at(i)->life<=0){
+				playSound(3);
 				waves.push_back(new Wave(this->position.x, this->position.y, this->color));
 				score += 50;
 				delete bricks[i];
 				bricks.erase(bricks.begin() + i);
 			}
 			else {
+				playSound(2);
 				waves.push_back(new Wave(bricks.at(i)->position.x, bricks.at(i)->position.y, bricks.at(i)->width, bricks.at(i)->height, bricks.at(i)->color));
 			}
 		}
@@ -142,6 +148,7 @@ void Ball::checkCollision()
 			else {
 				horizontalFlip = true;
 			}
+			playSound(4);
 			waves.push_back(new Wave(fixedBricks.at(i)->position.x, fixedBricks.at(i)->position.y, fixedBricks.at(i)->width, fixedBricks.at(i)->height, fixedBricks.at(i)->color));
 		}
 	}

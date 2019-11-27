@@ -42,5 +42,19 @@ extern sf::Color powerupColors[];
 
 extern std::vector<Wave*> waves;
 
+extern sf::SoundBuffer hitPaddleBuffer;
+extern sf::SoundBuffer hitWallBuffer;
+extern sf::SoundBuffer hitBrickBuffer;
+extern sf::SoundBuffer destroyBrickBuffer;
+extern sf::SoundBuffer hitFixedBrickBuffer;
+extern sf::SoundBuffer loseBuffer;
+extern sf::SoundBuffer winBuffer;
+extern sf::SoundBuffer powerupBuffer;
+extern sf::Sound sound;
+extern sf::Sound destroySound;
+extern sf::Sound pupSound;
+extern sf::Sound stageSound;
+
 extern void loadAssets();
 extern void resetGame();
+extern void playSound(int soundId);

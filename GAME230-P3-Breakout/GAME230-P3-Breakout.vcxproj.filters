@@ -22,6 +22,9 @@
     <Filter Include="Resource Files\asset\font">
       <UniqueIdentifier>{b2edbef0-32f7-4731-8a1c-ca8414385452}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\asset\sound">
+      <UniqueIdentifier>{dd97051b-3e6b-4dc2-9be8-1a2a065db5de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -108,5 +111,31 @@
     <Font Include="asset\font\JustMyType-KePl.ttf">
       <Filter>Resource Files\asset\font</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="asset\sound\hitBrick.wav">
+      <Filter>Resource Files\asset\sound</Filter>
+    </Media>
+    <Media Include="asset\sound\hitPaddle.wav">
+      <Filter>Resource Files\asset\sound</Filter>
+    </Media>
+    <Media Include="asset\sound\hitWall.wav">
+      <Filter>Resource Files\asset\sound</Filter>
+    </Media>
+    <Media Include="asset\sound\lose.wav">
+      <Filter>Resource Files\asset\sound</Filter>
+    </Media>
+    <Media Include="asset\sound\powerup.wav">
+      <Filter>Resource Files\asset\sound</Filter>
+    </Media>
+    <Media Include="asset\sound\destroyBrick.wav">
+      <Filter>Resource Files\asset\sound</Filter>
+    </Media>
+    <Media Include="asset\sound\hitFixedBrick.wav">
+      <Filter>Resource Files\asset\sound</Filter>
+    </Media>
+    <Media Include="asset\sound\win.wav">
+      <Filter>Resource Files\asset\sound</Filter>
+    </Media>
   </ItemGroup>
 </Project>

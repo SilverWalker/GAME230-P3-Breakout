@@ -55,6 +55,7 @@ void Paddle::checkCollision() {
 			this->position.y - this->height / 2 < powerups.at(i)->position.y + powerups.at(i)->size / 2) {
 			delete powerups[i];
 			powerups.erase(powerups.begin() + i);
+			playSound(7);
 		}
 	}
 }

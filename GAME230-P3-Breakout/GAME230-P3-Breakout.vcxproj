@@ -182,6 +182,16 @@
   <ItemGroup>
     <Font Include="asset\font\JustMyType-KePl.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="asset\sound\destroyBrick.wav" />
+    <Media Include="asset\sound\hitBrick.wav" />
+    <Media Include="asset\sound\hitFixedBrick.wav" />
+    <Media Include="asset\sound\hitPaddle.wav" />
+    <Media Include="asset\sound\hitWall.wav" />
+    <Media Include="asset\sound\lose.wav" />
+    <Media Include="asset\sound\powerup.wav" />
+    <Media Include="asset\sound\win.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
