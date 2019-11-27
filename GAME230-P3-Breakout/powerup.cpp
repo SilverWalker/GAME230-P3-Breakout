@@ -25,7 +25,7 @@ Powerup::~Powerup()
 			player->width = 50;
 			break;
 		case 2:
-			if (ball->speed > 300.0f) { ball->speed -= 200.0f; }
+			if (ball->speed > 400.0f) { ball->speed -= 200.0f; }
 			break;
 		case 3:
 			ball->speed += 200.0f;
